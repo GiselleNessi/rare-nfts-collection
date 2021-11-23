@@ -14,18 +14,22 @@ contract MyEpicNFT is ERC721URIStorage {
   using Counters for Counters.Counter;
   Counters.Counter private _tokenIds;
 
-  uint256 private _totalSupply = 50;
+  uint256 private _totalSupply = 30;
 
     // We split the SVG at the part where it asks for the background color.
   string svgPartOne = "<svg xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='xMinYMin meet' viewBox='0 0 350 350'><style>.base { fill: white; font-family: serif; font-size: 24px; }</style><rect width='100%' height='100%' fill='";
   string svgPartTwo = "'/><text x='50%' y='50%' class='base' dominant-baseline='middle' text-anchor='middle'>";
 
-  string[] firstWords = ["Aggressive", "Brave", "Cheerful", "Delightful", "Dark", "Encouraging", "Frantic", "Grotesque", "Horrible", "Itchy", "Lively", "Mysterious", "Nervous", "Obedient", "Obnoxious", "Pleasant", "Quaint", "Repulsive", "Shy", "Silly", "Splendid", "Tender", "Unusual", "Uptight", "Wandering", "Zany"];
-  string[] secondWords = ["Ashwinder", "Bowtruckle", "Cantaur", "Chimaera", "Demiguise", "Dragon", "Erumpent", "Fairy", "Firedrake", "Fwooper", "Ghoul", "Gnome", "Griffin", "Hippogriff", "Imp", "Jackalope", "Manticore", "Niffler", "Phoenix", "Pixie", "Salamander", "Snail", "Spider", "Toad", "Troll", "Unicorn", "Werewolf", "Yeti" ];
-  string[] thirdWords = ["Ear", "Fang", "Tooth", "Pants", "Shirt", "Glasses", "Glove", "Toes", "Eye", "Flesh", "Egg", "Tongue", "Knee", "Elbow", "Hair", "Feather", "Scales", "Tail", "Heart", "Soul", "Eyebrow", "Shoe", "Wings", "Club", "Sword", "Dagger", "Chainsaw", "Horn", "Blubber", "Skin", "Fur", "Toast", "Burger", "Steak", "Liver", "Kidney"];
+  string[] firstWords = ["Algarete", "Bebecita", "Bellaca", "Bichota", "Bellaca", "Cangri", "Chavos", "Combi", "Corillo", "Dura", "Fronteo", "Guayo", "Mera", "Perrear", "Pichar", "Piquete", "Tiraera", "Hanguiar", "Acicalao", "Bregar", "Brutal", "Nene", "Gata", "Perreo", "Chama", "Srifino", "Guasa", "Dembow", "Bellaco", "Bebe"];
+
+/*   string[] firstWords = ["Whis", "Beerus", "Goten", "Chiaotzu", "Tien", "Roshi", "Master", "Piccolo", "Frieza", "Dodoria", "Nappa", "Cooler", "Cell", "Broly", "Goku", "Korin", "Naruto", "Itachi", "Vegeta", "Pikachu", "Trunks", "Charmander", "Charmeleon", "Charizard", "Squirtle", "Clefairy", "Jigglypuff", "Wigglytuff", "Meowth", "Psyduck", "Gengar", "Hypno", "Jynx", "Draganite", "Mewtwo", "Mew"];
+
+  string[] secondWords = ["Ser", "Haber", "Estar", "Tener", "Hacer", "Poder", "Decir", "Ir", "Ver", "Dar", "Saber", "Querer", "Llegar", "Pasar", "Deber", "Poner", "Parecer", "Quedar", "Creer", "Hablar", "Llevar", "Dejar", "Seguir", "Encontrar", "Llamar", "Venir", "Pensar", "Volver" ];
+
+  string[] thirdWords = ["Algarete", "Bebecita", "Bellaca", "Bichota", "Bicho", "Cangri", "Chavos", "Combi", "Corillo", "Dura", "Fronteo", "Guayo", "Mera", "Perrear", "Pichar", "Piquete", "Tiraera", "Hanguiar", "Acicalao", "Bregar", "Brutal", "Nene", "Gata", "Perreo", "Chama", "Srifino"]; */
 
   // Get fancy with it! Declare a bunch of colors.
-  string[] colors = ["red", "#08C2A8", "black", "yellow", "blue", "green"];
+  string[] colors = ["red", "#e30edc", "black", "yellow", "blue", "green"];
 
   event NewEpicNFTMinted(address sender, uint256 tokenId);
 
@@ -45,7 +49,7 @@ contract MyEpicNFT is ERC721URIStorage {
     return firstWords[rand];
   }
 
-  function pickRandomSecondWord(uint256 tokenId) public view returns (string memory) {
+  /* function pickRandomSecondWord(uint256 tokenId) public view returns (string memory) {
     uint256 rand = random(string(abi.encodePacked("SECOND_WORD", Strings.toString(tokenId))));
     rand = rand % secondWords.length;
     return secondWords[rand];
@@ -55,7 +59,7 @@ contract MyEpicNFT is ERC721URIStorage {
     uint256 rand = random(string(abi.encodePacked("THIRD_WORD", Strings.toString(tokenId))));
     rand = rand % thirdWords.length;
     return thirdWords[rand];
-  }
+  } */
 
    // Same old stuff, pick a random color.
   function pickRandomColor(uint256 tokenId) public view returns (string memory) {
@@ -71,12 +75,12 @@ contract MyEpicNFT is ERC721URIStorage {
   function makeAnEpicNFT() public {
     uint256 newItemId = _tokenIds.current();
 
-    require(_totalSupply > newItemId, "SOLD OUT: Theres a mint limit of 50");
+    require(_totalSupply > newItemId, "SOLD OUT: Theres a mint limit of 30");
 
     string memory first = pickRandomFirstWord(newItemId);
-    string memory second = pickRandomSecondWord(newItemId);
-    string memory third = pickRandomThirdWord(newItemId);
-    string memory combinedWord = string(abi.encodePacked(first, second, third));
+    //string memory second = pickRandomSecondWord(newItemId);
+    //string memory third = pickRandomThirdWord(newItemId);
+    string memory combinedWord = string(abi.encodePacked(first/* , second, third */));
 
     // Add the random color in.
     string memory randomColor = pickRandomColor(newItemId);
@@ -90,7 +94,7 @@ contract MyEpicNFT is ERC721URIStorage {
                     '{"name": "',
                     // We set the title of our NFT as the generated word.
                     combinedWord,
-                    '", "description": "A highly acclaimed collection of squares.", "image": "data:image/svg+xml;base64,',
+                    '", "description": "A highly acclaimed collection of squares and perreo.", "image": "data:image/svg+xml;base64,',
                     // We add data:image/svg+xml;base64 and then append our base64 encode our svg.
                     Base64.encode(bytes(finalSvg)),
                     '"}'

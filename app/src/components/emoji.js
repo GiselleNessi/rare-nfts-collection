@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 const Emoji = props => (
     <span
-      className="emoji"
+      style={{ fontSize: 25 }}
       role="img"
       aria-label={props.label ? props.label : ""}
       aria-hidden={props.label ? "false" : "true"}

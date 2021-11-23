@@ -7,9 +7,9 @@ import Emoji from './components/emoji.js'
 
 const TWITTER_HANDLE = 'Gi_Chacon';
 const TWITTER_LINK = `https://twitter.com/${TWITTER_HANDLE}`;
-const OPENSEA_COLLECTION_LINK = 'https://testnets.opensea.io/collection/squarenft-oenipiakmd';
-const TOTAL_MINT_COUNT = 50;
-const CONTRACT_ADDRESS = "0x088A9e5f426f700F34323e01aC04329C95f19362"; // @TODO: Update this anytime a new contract is deployed && update the abi file(src/utils/myEpicNft.json)
+const OPENSEA_COLLECTION_LINK = 'https://testnets.opensea.io/collection/squarenft-n4krdfqrby';
+const TOTAL_MINT_COUNT = 30;
+const CONTRACT_ADDRESS = "0xa5f2ba0fFf428A9913FA5B8aC6f93B44e13A653b"; // @TODO: Update this anytime a new contract is deployed && update the abi file(src/utils/myEpicNft.json)
 
 const App = () => {
   const [currentAccount, setCurrentAccount] = useState("");
@@ -214,9 +214,8 @@ const App = () => {
             View Collection On Opensea
           </button>)
         </div>
+        <div><iframe src="https://giphy.com/embed/lSz53KWTJWTGh2Yo98" width="100%" height="100%" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div>
         <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-        <div className="three-words-gif" ><iframe src="https://giphy.com/embed/lSz53KWTJWTGh2Yo98" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div><p><a href="https://giphy.com/gifs/badbunny-bad-bunny-200-mph-lSz53KWTJWTGh2Yo98">via GIPHY</a></p>
-         
           {mintCount < TOTAL_MINT_COUNT && (<p className="mint-count">{mintCount}/{TOTAL_MINT_COUNT} Minted</p>)}
           {mintCount === TOTAL_MINT_COUNT && (<p className="mint-count">Sold Out!</p>)}
           {getButton()}
