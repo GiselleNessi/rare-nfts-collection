@@ -1,6 +1,6 @@
 # Buildspace - Mint your own NFT Project
 
-[Mint Site]()
+[Mint Site](https://rare-nfts-collection-gisellenessi.vercel.app/)
 
 [NFT Smart Contract - Etherscan](https://rinkeby.etherscan.io/address/0xa5f2ba0fFf428A9913FA5B8aC6f93B44e13A653b#code)
 
